@@ -1,0 +1,50 @@
+.contact-us {
+    display: grid;
+    align-items: center;
+    padding: 60px 0;
+    height: 700px;
+
+    .contact-us-pillars {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        align-items: center;
+    }
+   
+    .contact-us-info {
+        margin-bottom: 30px;
+
+        h3, p {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: #A1A1A1;
+        }
+    }
+
+    .contact-us-pillars-right-info {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        margin-top: 30px;
+    }
+
+    .contact-us-map {
+        width: 100%;
+
+        iframe {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 428px) { 
+    .contact-us {
+        padding: 105px 15px;
+        height: auto;
+
+        .contact-us-pillars {
+            grid-template-columns: 100%;
+        }   
+    }
+}

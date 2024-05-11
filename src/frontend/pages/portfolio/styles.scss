@@ -1,0 +1,29 @@
+.portfolio {
+    margin-top: 90px;
+
+    .content-two-col-right-img {
+        height: 430px;
+    }
+
+    .content-two-col-left-img {
+        height: auto;
+
+        .content-two-col-left-img__left {
+            height: 430px;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+
+            > div {
+                height: 309px;
+            }
+        }
+        .content-two-col-left-img__right {
+            height: 430px;
+    
+            > div {
+                height: auto;
+            }
+        }
+    }
+}

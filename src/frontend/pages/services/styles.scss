@@ -1,0 +1,30 @@
+.services {
+    margin: 100px 0 100px;
+}
+
+.services-content-pillar {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+
+    .services-content-pillar__item {
+        > div {
+            width: 500px;
+            margin: 0 auto;
+            text-align: justify;
+        }
+    }    
+}
+
+@media only screen and (max-width: 428px) { 
+    .services-content-pillar {
+        grid-template-columns: 100%;
+        padding: 0 15px;
+    
+        .services-content-pillar__item {
+            > div {
+                width: 100%;
+            }
+        }    
+    }
+}

@@ -1,0 +1,16 @@
+.mobile-banner {
+    margin-top: 80px;
+
+    .banner-title {
+        text-align: justify;
+        font-size: 35px;
+        padding: 30px 20px;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
