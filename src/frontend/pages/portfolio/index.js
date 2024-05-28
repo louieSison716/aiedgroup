@@ -17,7 +17,6 @@ import Tile from '../../components/contentBlocks/tile/index.js'
 const Portfolio = (props) => {
 
     const { apiUrl } = props
-  
     const Portfolios = useFetch(`${apiUrl}portfolios?populate=FeatureBlock.featuredImage`)
    
     const renderPortfolio = () => {
@@ -38,7 +37,6 @@ const Portfolio = (props) => {
     }
 
     useEffect(()=>{
-      
     },[Portfolios])
 
   return (

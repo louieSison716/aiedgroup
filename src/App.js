@@ -13,7 +13,7 @@ import useFetch from "./hooks/useFetch";
 function App() {
 
   // const [apiUrl, setApiUrl] = useState('http://localhost:1337/api/')
-  const [apiUrl, setApiUrl] = useState('https://aied-cms-at8zr.ondigitalocean.app/admin/')
+  const [apiUrl, setApiUrl] = useState('https://aied-cms-at8zr.ondigitalocean.app/api/')
 
   return (
     <>
