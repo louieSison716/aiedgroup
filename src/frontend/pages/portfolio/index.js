@@ -7,14 +7,39 @@ import PropTypes from 'prop-types'
 import Header from '../../components/header/desktop/index.js'
 import MobileHeader from '../../components/header/mobile/index.js'
 import Footer from '../../components/footer/index.js'
-import VideoImg from '../../../frontend/images/video-img.png'
-import investVideoImg from '../../images/invest-video-image.png'
 import Laforet2Img from '../../images/laforet-2-img.png'
 import Kabisera2img from '../../images/kabisera-2-img.png'
 import styles from './styles.scss'
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
+import useFetch from '../../../hooks/useFetch.js';
+import Tile from '../../components/contentBlocks/tile/index.js'
 
 const Portfolio = (props) => {
+
+    const { apiUrl } = props
+  
+    const Portfolios = useFetch(`${apiUrl}portfolios?populate=FeatureBlock.featuredImage`)
+   
+    const renderPortfolio = () => {
+        return Portfolios.data.data.map((item)=> {
+          return (
+            <>
+                 <Tile
+                    id={item.id}
+                    title={item.attributes.FeatureBlock.title}
+                    description={item.attributes.FeatureBlock.description}
+                    btnTitle={item.attributes.FeatureBlock.btnTitle}
+                    imageUrl={`http://localhost:1337${item.attributes.FeatureBlock.featuredImage.data.attributes.url}`}
+                    imageRight={item.attributes.FeatureBlock.imageRight}
+                />
+            </>
+          )
+       })
+    }
+
+    useEffect(()=>{
+      
+    },[Portfolios])
 
   return (
     <>
@@ -28,42 +53,10 @@ const Portfolio = (props) => {
           </>
         }
         <div className='portfolio'>
-            <div className='content-two-col-right-img container-cmn container-width-cmn'>
-                <div className='content-two-col-right-img__pillars'>
-                    <div className='content-two-col-right-img__left'>
-                        <div>
-                            <h2>The City Nature Vibe of Kabisera</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting...
-                            </p>
-                            <div class="content-center-btn"><a href="/portfolio/kabisera" class="light-btn">Read More</a></div>
-                        </div>
-                    </div>
-                    <div className='content-two-col-right-img__right'>
-                        <div>
-                            <img src={Kabisera2img} className="App-logo" alt="logo" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='content-two-col-left-img container-cmn container-width-cmn'>
-                <div className='content-two-col-left-img__pillars'>
-                    <div className='content-two-col-left-img__left'>
-                        <div>
-                            <img src={Laforet2Img} className="App-logo" alt="logo" />
-                        </div>
-                    </div>
-                    <div className='content-two-col-left-img__right'>
-                        <div>
-                            <h2>The Game Changer of La Foret</h2>
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting...
-                            </p>
-                            <div class="content-center-btn"><a href="/portfolio/laforet" class="light-btn">Read More</a></div>
-                        </div>
-                    </div>
-                </div>
-          </div>
+            {
+                Portfolios.data &&
+                renderPortfolio()
+            }            
         </div>
         <Footer />
     </>
@@ -72,11 +65,11 @@ const Portfolio = (props) => {
 }
 
 Portfolio.propTypes = {
-
+    apiUrl: PropTypes.string
 }
 
 Portfolio.defaultProps = {
-
+    apiUrl: ''
 }
 
 export default Portfolio

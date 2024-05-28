@@ -16,15 +16,7 @@ const Services = (props) => {
     const servicesPage = useFetch('http://localhost:1337/api/service-page')
 
     useEffect(()=>{
-
-        if(services.data){
-            console.log(services)
-        }
-
-        if(servicesPage.data){
-            console.log(servicesPage.data.data.attributes)
-        }
-
+        //if needed
     },[services, servicesPage])
 
   return (
